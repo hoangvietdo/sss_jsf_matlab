@@ -6,6 +6,7 @@ The parsing code is made based on the format descriptions from EdgeTech ```edge_
 
 ## Info
 Currently, only message type 80 (sonar data) is extracted and decoded. By recommendation from EdgeTech, only message type 80 is needed.
+
 Other messages data can be easily calculated from this message type.
 
 ## Usage
