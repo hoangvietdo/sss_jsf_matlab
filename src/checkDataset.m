@@ -69,6 +69,7 @@ subplot(212),
 plot(GNSS_Course)
 xlabel('Sample Step'); xlim([0 N])
 ylabel('Course [Deg]')
+
 %% Plot scaled acoustic data
 for i = 1:1:length(sonarBuffer)
     foo = sonarBuffer{i}.Sonar80.SonarData;
