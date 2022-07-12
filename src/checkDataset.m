@@ -47,6 +47,7 @@ subplot(313),
 plot(Altitude)
 ylabel('Altitude [m]'); xlim([0 N])
 xlabel('Sample Step')
+
 %% Sound Speed in m/s
 soundSpeed = splitBuffer(sonarBuffer, 'Sonar80', 'SoundSpeed');
 
@@ -54,6 +55,7 @@ figure(3),
 plot(soundSpeed)
 xlabel('Sample Step'); xlim([0 N])
 ylabel('Sound Speed [m/s]')
+
 %% GNSS Speed (Knots) + Course (Degree)
 % see page 12
 GNSS_Speed = splitBuffer(sonarBuffer, 'Sonar80', 'NMEASpeed');
@@ -83,9 +85,3 @@ for i = 1:1:length(sonarBuffer)
     xlim([0 length(rawData)])
     pause(1)
 end
-
-%%
-weightingFactor = splitBuffer(sonarBuffer, 'Sonar80', 'WeightingFactor');
-
-
-
