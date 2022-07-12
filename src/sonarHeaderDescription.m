@@ -1,6 +1,6 @@
 function sonarHeader = sonarHeaderDescription()
     % Reference: section 2.2
-    % Count = 117 (sum of all size)
+    % Count = 117 (sum of all dimension)
     
     sonarHeader = cell2table({...
             'TimeSince1970'                    1   'int32'
