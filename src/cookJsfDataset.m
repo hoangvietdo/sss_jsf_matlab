@@ -72,7 +72,7 @@ while ~feof(fid) % While the file is not end (help feof)
         end
 
         buffer3000_.Header = data;
-        buffer3000_.bath3000 = bath3000;
+        buffer3000_.Bath3000 = bath3000;
         bath3000Buffer{end + 1} = buffer3000_;
     else
         uninterestedMessage = fread(fid, [1 data.ByteCount], 'uint8');
