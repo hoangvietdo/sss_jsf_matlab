@@ -5,7 +5,7 @@ Matlab code for extracting data message from a given ```.jsf``` file (side scan 
 The parsing code is made based on the format descriptions from EdgeTech ```edge_tech_jsf_rev_2022.pdf``` (version June 17, 2022).
 
 ## Info
-Currently, only message type 80 (sonar data) and type 3000 (not fully) are extracted and decoded.
+Currently, only message type 80 (sonar data) and type 3000 (currently testing and checking) are extracted and decoded.
 
 ## Usage
 1. Run ```cookJsfDataset.m``` with the correct ```path``` and ```file``` variable.
