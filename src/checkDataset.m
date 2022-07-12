@@ -71,10 +71,21 @@ xlabel('Sample Step'); xlim([0 N])
 ylabel('Course [Deg]')
 
 %% Plot scaled acoustic data
+weightingFactor = splitBuffer(sonarBuffer, 'Sonar80', 'WeightingFactor');
 for i = 1:1:length(sonarBuffer)
-    foo = sonarBuffer{i}.Sonar80.SonarData;
+    % Scaled acoustic data
+    % see equation 2-2-1
+    rawData = sonarBuffer{i}.Sonar80.SonarData;
+    scaledData = sonarBuffer{i}.Sonar80.SonarData * 2^(-weightingFactor(i));
     figure(111),
-    plot(foo, '.')
-    xlim([0 length(foo)])
-    pause(0.5)
+    plot(rawData, 'b.'); hold on;
+    plot(scaledData, 'r.'); hold off;
+    xlim([0 length(rawData)])
+    pause(1)
 end
+
+%%
+weightingFactor = splitBuffer(sonarBuffer, 'Sonar80', 'WeightingFactor');
+
+
+

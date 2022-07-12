@@ -48,11 +48,8 @@ while ~feof(fid) % While the file is not end (help feof)
 
         % Unscaled acoustic data
         rawdata = fread(fid, [1, totalBytes], 'int16');
+        sonar.SonarData = rawdata;
         
-        % Scaled acoustic data
-        % see equation 2-2-1
-        sonar.SonarData = rawdata * 2^(-sonar.WeightingFactor); 
-
         buffer_.Header = data;
         buffer_.Sonar80 = sonar;
         sonarBuffer{end + 1} = buffer_;
