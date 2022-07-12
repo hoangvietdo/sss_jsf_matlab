@@ -41,15 +41,15 @@ while ~feof(fid) % While the file is not end (help feof)
         % see Data Format Byte offset 34-35
         % see also "Sonar trace data" in page 13
         % total bytes of data 
-        totalBytes = sonar.Sample * (sonar.DataFormat + 1);
-        if totalBytes * 2 + 240 ~= data.ByteCount
+        totalNumberOfIntegers = sonar.Sample * (sonar.DataFormat + 1);
+        if totalNumberOfIntegers * 2 + 240 ~= data.ByteCount
             error('Acoustic data size is wrong')
         end
 
         % Unscaled acoustic data
-        rawdata = fread(fid, [1, totalBytes], 'int16');
+        rawdata = fread(fid, [1, totalNumberOfIntegers], 'int16');
         sonar.SonarData = rawdata;
-        
+
         buffer_.Header = data;
         buffer_.Sonar80 = sonar;
         sonarBuffer{end + 1} = buffer_;
