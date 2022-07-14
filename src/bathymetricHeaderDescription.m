@@ -45,5 +45,19 @@ function bathymetricHeader = bathymetricHeaderDescription(type)
                 'SNR'                   1   'ubit5'
                 'Quality'               1   'ubit3'
                 }, 'VariableNames', {'Name', 'Dimension', 'Type'});
+        case '3002'
+            % Reference: section 2.5.3
+            % Count =  (sum of all dimension)
+            bathymetricHeader = cell2table({ ...
+                'TimeSince1970'         1   'uint32'
+                'Nanosecond'            1   'uint32'
+                'ValidFlag'             1   'uint32'
+                'AbsolutePressure'      1   'float'
+                'WaterTemp'             1   'float'
+                'Salinity'              1   'float'
+                'Conductivity'          1   'float'
+                'SoundVelocity'         1   'float'
+                'Depth'                 1   'float'
+                }, 'VariableNames', {'Name', 'Dimension', 'Type'});
     end
 end
