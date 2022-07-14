@@ -8,10 +8,11 @@ The parsing code is made based on the format descriptions from EdgeTech ```edge_
 Currently, only message type 80 (sonar data) and type 3000 (currently testing and checking) are extracted and decoded.
 
 ## Usage
-1. Run ```cookJsfDataset.m``` with the correct ```path``` and ```file``` variable and choose the message type to be recorded by setting the variable ```type80```, ```type3000``` or ```type3002``` to be ```1```.
+1. Run ```cookJsfDataset.m``` with the correct ```path``` and ```file``` variable and choose the message type to be recorded by setting the variable ```type80``` or ```type3000``` to be ```1```.
 
-    - Note that message ```type3000``` and ```type3002``` should be set at the same time. (these types are not currently recommended since it is too large).
 2. Run ```checkDataset.m``` to plot the acoustic measurement.
 
 ## Q&A
 Contact ```hoangvietdo@sju.ac.kr``` or make an issue for discussion.
+
+PRs are of course welcome.
