@@ -1,10 +1,13 @@
+%% TODO
+% seperate data into 'port' and 'starboard'. Currently only acoustic data is splitted.
+
 %%
-clear
+% clear
 close
 clc
 
 %%
-load 0831_sonarMessage_80.mat
+% load 0831_sonarMessage_80_3000.mat
 
 %% Attitude (convert from EdgeTech unit to degree) - see page 11
 roll = splitBuffer(sonarBuffer, 'Sonar80', 'Roll');
@@ -79,9 +82,21 @@ for i = 1:1:length(sonarBuffer)
     % see equation 2-2-1
     rawData = sonarBuffer{i}.Sonar80.SonarData;
     scaledData = sonarBuffer{i}.Sonar80.SonarData * 2^(-weightingFactor(i));
-    figure(111),
-    plot(rawData, 'b.'); hold on;
-    plot(scaledData, 'r.'); hold off;
-    xlim([0 length(rawData)])
-    pause(1)
+
+    timeIdx = 1:1:length(rawData);
+    if sonarBuffer{i}.Header.Channel == 0
+        figure(111),
+        plot(-timeIdx, scaledData, 'r','DisplayName', 'Port'); hold on;
+        xlim([-length(rawData) length(rawData)])
+        title('Scaled Mixed Frequency Signals')
+        xlabel('Number of Data')
+        ylabel('Amplitude (dB)')
+        legend
+        pause(0.05)
+    elseif sonarBuffer{i}.Header.Channel == 1
+        figure(111),
+        plot(timeIdx, scaledData, 'b', 'DisplayName', 'Starboard'); hold off;
+        legend
+        pause(0.05)
+    end
 end
